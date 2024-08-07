@@ -47,3 +47,7 @@ php artisan view:clear
 
 2. Regenerate composer autoload files:
 composer dump-autoload
+
+If planning to deploy this on live don't forget to edit the cors.php
+
+refer to Laravel 11 documentation for more info
