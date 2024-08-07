@@ -1,0 +1,15 @@
+.SearchContainer{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    .Search-form{
+        margin-top: 200px;
+        display: flex;
+        width: 50%;
+        .form-group{
+            display: flex;
+            width: 100%;
+        }
+
+    }
+}
