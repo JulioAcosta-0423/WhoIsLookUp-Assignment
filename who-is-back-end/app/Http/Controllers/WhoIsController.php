@@ -43,13 +43,15 @@ class WhoisController extends Controller
                 $truncatedHostnames = array_map(function ($hostname) {
                     return strlen($hostname) > 25 ? substr($hostname, 0, 25) . '...' : $hostname;
                 }, $hostnames);
+
+                $hostnamesString = implode(', ', $truncatedHostnames);
             $filteredData = [
                 'DomainName' => $data['WhoisRecord']['domainName'],
                 'Registrar' => $data['WhoisRecord']['registrarName'],
                 'RegistrationDate' => $data['WhoisRecord']['createdDateNormalized'],
                 'ExpirationDate' => $data['WhoisRecord']['expiresDateNormalized'],
                 'EstimatedDomainAge' => $data['WhoisRecord']['estimatedDomainAge'],
-                'Hostnames' => $truncatedHostnames,
+                'Hostnames' => $hostnamesString,
                 'type' => '1'
             ];
         }else{

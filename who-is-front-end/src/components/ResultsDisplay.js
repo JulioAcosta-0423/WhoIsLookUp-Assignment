@@ -22,7 +22,7 @@ function ResultsDisplay({ results }) {
                         <td>{results.RegistrationDate}</td>
                         <td>{results.ExpirationDate}</td>
                         <td>{results.EstimatedDomainAge}</td>
-                        <td>{results.Hostnames}</td>
+                        <td class="text-wrap text-break w-25">{results.Hostnames}</td>
                     </tr>
                 </tbody>
             </table>
