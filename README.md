@@ -6,4 +6,4 @@ The Whois API is a service that provides comprehensive information about domain 
 
 Refer to each Readmes inside the individual projects. Both Frontend and Backend have different Readme files regarding on how to run the code.
 
-Also, first run the backend before the frontend in order for it to work.
+Also, first run the backend before the frontend in order for it to surely work.
