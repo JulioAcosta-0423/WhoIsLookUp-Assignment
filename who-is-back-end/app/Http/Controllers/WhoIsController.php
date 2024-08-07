@@ -25,7 +25,7 @@ class WhoisController extends Controller
             ],
             'json' => [
                 'domainName' => $request->domain,
-                'apiKey' => 'at_tlzXWfEVAdLMxa9AGZA6jTC0torjN',
+                'apiKey' => env('WHOIS_API_KEY'),
                 'outputFormat' => 'JSON'
             ],
         ]);
@@ -40,23 +40,9 @@ class WhoisController extends Controller
         }
         if($option === "1"){
             $hostnames = $data['WhoisRecord']['nameServers']['hostNames'];
-            $totalLength = 0;
-            $truncatedHostnames = [];
-
-            foreach ($hostnames as $hostname) {
-                $remainingLength = 25 - $totalLength;
-                if ($remainingLength <= 0) {
-                    break;
-                }
-                if (strlen($hostname) > $remainingLength) {
-                    $hostname = substr($hostname, 0, $remainingLength - 3) . ', ...';
-                    $totalLength += strlen($hostname);
-                    $truncatedHostnames[] = $hostname;
-                    break;
-                }
-                $truncatedHostnames[] = $hostname;
-                $totalLength += strlen($hostname);
-            }
+                $truncatedHostnames = array_map(function ($hostname) {
+                    return strlen($hostname) > 25 ? substr($hostname, 0, 25) . '...' : $hostname;
+                }, $hostnames);
             $filteredData = [
                 'DomainName' => $data['WhoisRecord']['domainName'],
                 'Registrar' => $data['WhoisRecord']['registrarName'],
